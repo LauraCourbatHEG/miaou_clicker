@@ -1,0 +1,71 @@
+body {
+    text-align: center;
+    font-family: 'Comic Sans MS', sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    margin-top: 30px;
+    font-size: 2.5em;
+    color: #ffcc66;
+  }
+  
+  #chaton_base {
+    width: 200px;
+    cursor: pointer;
+    margin-top: 50px;
+    transition: transform 0.1s;
+  }
+  
+  #chaton_base:active {
+    transform: scale(0.95);
+  }
+  
+  #score {
+    font-size: 2em;
+    margin-top: 20px;
+    color: gold;
+  }
+  #shop {
+    margin-top: 40px;
+  }
+  
+  #auto_clicker {
+    width: 100px;
+    cursor: pointer;
+    border: 2px solid #ffcc66;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  #auto_clicker:hover {
+    transform: scale(1.1);
+  }
+  
+  #upgrade_count {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #ffcc66;
+  }
+  #auto_patoune, #auto_brosse, #auto_mamie {
+    width: 100px;
+    cursor: pointer;
+    border: 2px solid #ffcc66;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    margin: 10px;
+  }
+  
+  #auto_patoune:hover, #auto_brosse:hover,#auto_mamie:hover {
+    transform: scale(1.1);
+  }
+  
+  #patoune_count, #brosse_count,#mamie_count {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #ffcc66;
+  }
+  
