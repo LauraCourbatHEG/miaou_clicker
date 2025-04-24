@@ -1,3 +1,4 @@
+let structurejson;
 let gold = 0;  // Variable de l'or
 let patoune = 0;  // Nombre de patounes achetées
 let brosse = 0;   // Nombre de brosses achetées
