@@ -2,7 +2,9 @@ const myjson = {
   "personnes": [
     { "nom": "Patoune", "prix": 20, "revenu": 1 },
     { "nom": "Brosse", "prix": 50, "revenu": 5 },
-    { "nom": "Mamie", "prix": 200, "revenu": 10 }
+    { "nom": "Mamie", "prix": 200, "revenu": 10 },
+    { "nom": "Machine a Calin", "prix": 2000, "revenu": 100 },
+    { "nom": "Tally", "prix": 2000, "revenu": 100 }
   ]
 };
 
@@ -17,6 +19,53 @@ const structurejson = myjson.personnes.map(personne => {
 });
 
 const inventaire = new Array(structurejson.length).fill(0); //Tableau d'objets qu'on peut acheter
+
+
+// Construction de la page html
+const btnContainer = document.getElementById('achats');
+structurejson.forEach((objet, i) => {
+  const nomId = objet.nom.toLowerCase().replace(" ","");
+  const btn = document.createElement('button');
+
+  btn.id = `auto_${nomId}`;
+  btn.className = 'btn btn-outline-primary m-1';
+  btn.textContent = `Acheter ${objet.nom}`;
+
+  btnContainer.appendChild(btn);
+});
+
+const cartesContainer = document.getElementById('cartes');
+
+structurejson.forEach((objet, index) => {
+  const nomId = objet.nom.toLowerCase().replace(" ","");
+  const compteurSpan = document.createElement('span');
+  compteurSpan.id = `${nomId}_count`;
+  compteurSpan.textContent = `${objet.nom} : 0`;
+
+  const card = document.createElement('div');
+  card.className = 'row g-0 bg-primary position-relative mb-4';
+
+  card.innerHTML = `
+    <div class="col-md-2 mb-md-0 p-md-4">
+      <img src="https://via.placeholder.com/200x150?text=${objet.nom}" class="w-100 rounded" alt="${objet.nom}">
+    </div>
+    <div class="col-md-6 p-4 ps-md-0">
+      <h5 class="mt-0">${objet.nom}</h5>
+      <p>Revenu : ${objet.revenu} or/sec<br>Prix : ${objet.prix} or</p>
+    </div>
+  `;
+
+  const link = document.createElement('a');
+  link.href = '#';
+  link.className = 'stretched-link';
+  link.textContent = `Acheter ${objet.nom}`;
+
+  card.querySelector('.col-md-6.p-4').appendChild(compteurSpan);
+  card.querySelector('.col-md-6.p-4').appendChild(link);
+  cartesContainer.appendChild(card);
+});
+
+
 
 // Récupération des éléments HTML
 const mineImg = document.getElementById('chaton_base');
