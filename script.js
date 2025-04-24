@@ -3,6 +3,14 @@ let patoune = 0;  // Nombre de patounes achetées
 let brosse = 0;   // Nombre de brosses achetées
 let mamie = 0;   // Nombre de mamies achetées
 
+fetch('structure.json')
+  .then(response => response.json())
+  .then(data => {
+    const structurejson = data.personnes; // ou simplement `data` si ton JSON est déjà un tableau
+    console.log(structurejson); // Tu peux utiliser ta variable ici
+  });
+
+
 // Récupération des éléments HTML
 const mineImg = document.getElementById('chaton_base');
 const scoreDisplay = document.getElementById('score');
@@ -22,7 +30,7 @@ mineImg.addEventListener('click', () => {
 // Achat de la patoune
 autoPatoune.addEventListener('click', () => {
   if (gold >= 20) {  // Vérifie or
-    gold -= 20;  // Déduit 50 or
+    gold -= structurejson[0].prix;  // Déduit 50 or
     patoune++;   // Incrémente le nombre de patounes
     patouneCount.textContent = `Patounes : ${patoune}`;  // Met à jour le compteur de patounes
     updateScore();  // Met à jour l'affichage de l'or

@@ -1,0 +1,8 @@
+{
+    "personnes": [
+      { "nom": "Patounes", "prix": 20, "revenu": 1 },
+      { "nom": "Brosse", "prix": 50, "revenu": 5 },
+      { "nom": "Mamie", "prix": 200, "revenu": 10 }
+    ]
+  }
+  
