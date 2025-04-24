@@ -6,10 +6,7 @@ const myjson = {
   ]
 };
 
-let gold = 1000;  // Variable de l'or
-let patoune = 0;  // Nombre de patounes achetées
-let brosse = 0;   // Nombre de brosses achetées
-let mamie = 0;   // Nombre de mamies achetées
+let gold = 5000;  // Variable de l'or
 
 const structurejson = myjson.personnes.map(personne => {
   return {
@@ -26,13 +23,15 @@ const mineImg = document.getElementById('chaton_base');
 const scoreDisplay = document.getElementById('score');
 
 const AutoElements = structurejson.map(objet =>
-  document.getElementById(`auto_${objet.nom.toLowerCase()}`)
+  document.getElementById(`auto_${objet.nom.toLowerCase().replace(" ","")}`)
 );
 
 const compteurElements = structurejson.map(objet =>
-  document.getElementById(`${objet.nom.toLowerCase()}_count`)
+  document.getElementById(`${objet.nom.toLowerCase().replace(" ","")}_count`)
 );
 
+
+updateScore();
 
 
 function acheterObjet(index) {
@@ -42,7 +41,7 @@ function acheterObjet(index) {
     compteurElements[index].textContent = `${structurejson[index].nom} : ${inventaire[index]}`;  // Met à jour le compteur affiché
     updateScore();  // Met à jour l'affichage de l'or
   } else {
-    alert(`Pas assez d'or pour acheter un(e) ${structurejson[index].nom.toLowerCase()} !`);
+    alert(`Pas assez d'or pour acheter un(e) ${structurejson[index].nom.toLowerCase().replace(" ","")} !`);
   }
 }
 
