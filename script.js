@@ -1,12 +1,10 @@
 const myjson = {
   "personnes": [
-    { "nom": "Patounes", "prix": 20, "revenu": 1 },
+    { "nom": "Patoune", "prix": 20, "revenu": 1 },
     { "nom": "Brosse", "prix": 50, "revenu": 5 },
     { "nom": "Mamie", "prix": 200, "revenu": 10 }
   ]
 };
-
-const inventaire = new Array(3).fill(0); //Tableau d'objets qu'on peut acheter
 
 let gold = 1000;  // Variable de l'or
 let patoune = 0;  // Nombre de patounes achetées
@@ -21,15 +19,20 @@ const structurejson = myjson.personnes.map(personne => {
   };
 });
 
+const inventaire = new Array(structurejson.length).fill(0); //Tableau d'objets qu'on peut acheter
 
 // Récupération des éléments HTML
 const mineImg = document.getElementById('chaton_base');
 const scoreDisplay = document.getElementById('score');
 
-const nomsAuto = ['auto_patoune', 'auto_brosse', 'auto_mamie'];
-const AutoElements = nomsAuto.map(id => document.getElementById(id));
-const nomsIds = ['patoune_count', 'brosse_count', 'mamie_count'];
-const compteurElements = nomsIds.map(id => document.getElementById(id));
+const AutoElements = structurejson.map(objet =>
+  document.getElementById(`auto_${objet.nom.toLowerCase()}`)
+);
+
+const compteurElements = structurejson.map(objet =>
+  document.getElementById(`${objet.nom.toLowerCase()}_count`)
+);
+
 
 
 function acheterObjet(index) {
