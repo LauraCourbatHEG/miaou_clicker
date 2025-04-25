@@ -1,10 +1,10 @@
 const myjson = {
   "personnes": [
-    { "nom": "Patoune", "prix": 20, "revenu": 1 },
-    { "nom": "Brosse", "prix": 50, "revenu": 5 },
-    { "nom": "Mamie", "prix": 200, "revenu": 10 },
-    { "nom": "Machine a Calin", "prix": 2000, "revenu": 100 },
-    { "nom": "Tally", "prix": 2000, "revenu": 100 }
+    { "nom": "Patoune", "prix": 20, "revenu": 1, "image":"patoune.jpg" },
+    { "nom": "Brosse", "prix": 50, "revenu": 5, "image":"brush.jpg" },
+    { "nom": "Mamie", "prix": 200, "revenu": 10, "image":"grandma.jpg" },
+    { "nom": "Machine a Calin", "prix": 2000, "revenu": 100, "image":"WIPLogo.webp" },
+    { "nom": "Tally", "prix": 2000, "revenu": 100, "image":"WIPLogo.webp" }
   ]
 };
 
@@ -14,7 +14,8 @@ const structurejson = myjson.personnes.map(personne => {
   return {
     nom: personne.nom,
     prix: personne.prix,
-    revenu: personne.revenu
+    revenu: personne.revenu,
+    image : personne.image
   };
 });
 
@@ -34,7 +35,7 @@ structurejson.forEach((objet, i) => {
   btnContainer.appendChild(btn);
 });
 
-const cartesContainer = document.getElementById('cartes');
+const cartesContainer = document.getElementById('listejolie');
 
 structurejson.forEach((objet, index) => {
   const nomId = objet.nom.toLowerCase().replace(" ","");
@@ -42,26 +43,26 @@ structurejson.forEach((objet, index) => {
   compteurSpan.id = `${nomId}_count`;
   compteurSpan.textContent = `${objet.nom} : 0`;
 
-  const card = document.createElement('div');
-  card.className = 'row g-0 bg-primary position-relative mb-4';
+  const card = document.createElement('a');
+  card.className = 'list-group-item list-group-item-action py-3 lh-sm';
+  card.href="#"
 
   card.innerHTML = `
-    <div class="col-md-2 mb-md-0 p-md-4">
-      <img src="https://via.placeholder.com/200x150?text=${objet.nom}" class="w-100 rounded" alt="${objet.nom}">
-    </div>
-    <div class="col-md-6 p-4 ps-md-0">
-      <h5 class="mt-0">${objet.nom}</h5>
-      <p>Revenu : ${objet.revenu} or/sec<br>Prix : ${objet.prix} or</p>
-    </div>
+    <div class="d-flex w-100 align-items-center justify-content-between">
+          <img src="images/${objet.image}" class="w-100 rounded img-thumbnail" alt="${objet.nom}"></img>
+          <strong class="mb-1">${objet.nom}</strong>
+          <small class="text-body-secondary">Revenu : ${objet.revenu} or/sec<br>Prix : ${objet.prix} or</small>
+        </div>
+        <div class="col-10 mb-1 small">${inventaire[index]}</div>
   `;
 
-  const link = document.createElement('a');
-  link.href = '#';
-  link.className = 'stretched-link';
-  link.textContent = `Acheter ${objet.nom}`;
+  //const link = document.createElement('a');
+  //link.href = '#';
+  //link.className = 'stretched-link';
+  //link.textContent = `Acheter ${objet.nom}`;
 
-  card.querySelector('.col-md-6.p-4').appendChild(compteurSpan);
-  card.querySelector('.col-md-6.p-4').appendChild(link);
+  //card.querySelector('.col-md-6.p-4').appendChild(compteurSpan);
+  //card.querySelector('.col-md-6.p-4').appendChild(link);
   cartesContainer.appendChild(card);
 });
 
